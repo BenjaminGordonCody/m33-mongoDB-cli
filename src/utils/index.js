@@ -30,6 +30,9 @@ exports.addMovie = async (collection, yargsObj) => {
 
 exports.addMany = async (collection, yargsObj) => {
   try {
+    if (yargsObj.entries < 9) {
+      console.log("Max 9 entries");
+    }
     const moviesArr = [];
     console.log(yargsObj.entries);
     for (let i = 1; i < yargsObj.entries + 1; i++) {
