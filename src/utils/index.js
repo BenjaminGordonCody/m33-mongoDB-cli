@@ -36,7 +36,6 @@ exports.addMany = async (collection, yargsObj) => {
       console.log("Max 9 entries");
     }
     const moviesArr = [];
-    console.log(yargsObj.entries);
     for (let i = 1; i < yargsObj.entries + 1; i++) {
       let movieObj = subsetOfIndividualMovieYargs(yargsObj, i);
       movieObj = movieObjFromYargs(movieObj); //removes unrecognised yargs
@@ -54,6 +53,16 @@ exports.find = async (collection, yargsObj) => {
     const cursor = await collection.find(movieObj);
     // console.log(cursor);
     await cursor.forEach(console.dir);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.update = async (collection, yargsObj) => {
+  try {
+    const movieObj = movieObjFromYargs(yargsObj);
+    console.log(movieObj);
+    await collection.updateOne(movieObj, yargsObj.replace);
   } catch (error) {
     console.log(error);
   }

@@ -1,6 +1,6 @@
 const yargs = require("yargs");
 const { client, connection } = require("./db/connection");
-const { addMovie, addMany, find } = require("./utils/index");
+const { addMovie, addMany, find, update } = require("./utils/index");
 
 const app = async (yargsObj) => {
   try {
@@ -11,6 +11,8 @@ const app = async (yargsObj) => {
       await addMany(collection, yargsObj);
     } else if (yargsObj.find) {
       await find(collection, yargsObj);
+    } else if (yargsObj.update) {
+      update(collection, yargsObj);
     } else {
       console.log("incorrect command");
     }
