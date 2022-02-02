@@ -12,7 +12,7 @@ const app = async (yargsObj) => {
     } else if (yargsObj.find) {
       await find(collection, yargsObj);
     } else if (yargsObj.update) {
-      update(collection, yargsObj);
+      await update(collection, yargsObj);
     } else {
       console.log("incorrect command");
     }

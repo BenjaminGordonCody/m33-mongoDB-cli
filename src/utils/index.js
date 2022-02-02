@@ -61,8 +61,12 @@ exports.find = async (collection, yargsObj) => {
 exports.update = async (collection, yargsObj) => {
   try {
     const movieObj = movieObjFromYargs(yargsObj);
-    console.log(movieObj);
-    await collection.updateOne(movieObj, yargsObj.replace);
+    let updateObj = {};
+    updateObj[yargsObj.newkey] = yargsObj.newvalue;
+    console.log(updateObj);
+    await collection.updateOne(movieObj, {
+      $set: updateObj,
+    });
   } catch (error) {
     console.log(error);
   }
