@@ -71,3 +71,8 @@ exports.update = async (collection, yargsObj) => {
     console.log(error);
   }
 };
+
+exports.remove = async (collection, yargsObj) => {
+  const movieObj = movieObjFromYargs(yargsObj);
+  await collection.deleteOne(movieObj);
+};
